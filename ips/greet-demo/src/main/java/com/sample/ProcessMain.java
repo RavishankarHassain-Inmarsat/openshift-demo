@@ -1,11 +1,12 @@
 package com.sample;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.jbpm.test.JBPMHelper;
-import org.jbpm.test.JbpmJUnitBaseTestCase;
-import org.junit.Test;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -15,17 +16,21 @@ import org.kie.api.runtime.manager.RuntimeEnvironmentBuilder;
 import org.kie.api.runtime.manager.RuntimeManager;
 import org.kie.api.runtime.manager.RuntimeManagerFactory;
 
-public class ProcessTest extends JbpmJUnitBaseTestCase{
+public class ProcessMain {
 
-	@Test
-	public void testProcess() {
+	public static void main(String[] args) {
 		KieServices ks = KieServices.Factory.get();
 		KieContainer kContainer = ks.getKieClasspathContainer();
 		KieBase kbase = kContainer.getKieBase("kbase");
 		RuntimeManager manager = createRuntimeManager(kbase);
 		RuntimeEngine engine = manager.getRuntimeEngine(null);
 		KieSession ksession = engine.getKieSession();
-		ksession.startProcess("com.sample.bpmn.greet");
+		Person ravishankar = new Person("Ravishankar");
+		Person stranger = new Person("Stranger");
+		Map<String,Object> param=new HashMap<>();
+		param.put("ravishankar", ravishankar);
+		param.put("stranger", stranger);
+		ksession.startProcess("com.sample.bpmn.greet", param);
 		manager.disposeRuntimeEngine(engine);
 		manager.close();
 	}
@@ -38,6 +43,6 @@ public class ProcessTest extends JbpmJUnitBaseTestCase{
 			.newDefaultBuilder().entityManagerFactory(emf)
 			.knowledgeBase(kbase);
 		return RuntimeManagerFactory.Factory.get()
-			.newSingletonRuntimeManager(builder.get(), "com.sample:ips-demo:1.0.0-SNAPSHOT");
+			.newSingletonRuntimeManager(builder.get(), "com.sample.os.ips:greet-demo:1.0.0-SNAPSHOT");
 	}
 }
