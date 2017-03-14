@@ -1,0 +1,8 @@
+package com.sample
+
+rule "greet"
+ruleflow-group "greet"
+    when
+    then
+    	System.out.println("Hello from greet rule :)");
+end
