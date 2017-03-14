@@ -1,6 +1,3 @@
-# openshift-demo  project
+# Openshift Sample Project
 
-This repository contains all the sample and demo openshift projects
-
-
-TEST Feature_3
+This repository contains sample openshift projects
