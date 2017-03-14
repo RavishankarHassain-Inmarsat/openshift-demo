@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="com.sample.bpmn.greet" name="Greet" tns:packageName="com.sample" >
+
+    <!-- nodes -->
+    <startEvent id="_1"  isInterrupting="true">
+    </startEvent>
+    <endEvent id="_3" >
+        <terminateEventDefinition />
+    </endEvent>
+    <scriptTask id="ScriptTask_1" name="Script" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("The BPM Process Kick Started");</script>
+    </scriptTask>
+    <businessRuleTask id="BusinessRuleTask_1" name="Greet Rule" g:ruleFlowGroup="greet" >
+      <extensionElements>
+        <tns:onEntry-script scriptFormat="http://www.java.com/java">
+          <tns:script>System.out.println("The Greet Rule Kick Started");</tns:script>
+        </tns:onEntry-script>
+        <tns:onExit-script scriptFormat="http://www.java.com/java">
+          <tns:script>System.out.println("The Greet Rule Ended");</tns:script>
+        </tns:onExit-script>
+      </extensionElements>
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </businessRuleTask>
+
+    <!-- connections -->
+    <sequenceFlow id="BusinessRuleTask_1-_3" sourceRef="BusinessRuleTask_1" targetRef="_3" />
+    <sequenceFlow id="_1-ScriptTask_1" sourceRef="_1" targetRef="ScriptTask_1" />
+    <sequenceFlow id="ScriptTask_1-BusinessRuleTask_1" sourceRef="ScriptTask_1" targetRef="BusinessRuleTask_1" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="com.sample.bpmn.greet" >
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="151" y="59" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_3" >
+        <dc:Bounds x="554" y="58" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ScriptTask_1" >
+        <dc:Bounds x="240" y="57" width="110" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BusinessRuleTask_1" >
+        <dc:Bounds x="400" y="57" width="110" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="BusinessRuleTask_1-_3" >
+        <di:waypoint x="455" y="82" />
+        <di:waypoint x="578" y="82" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_1-ScriptTask_1" >
+        <di:waypoint x="175" y="83" />
+        <di:waypoint x="295" y="82" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ScriptTask_1-BusinessRuleTask_1" >
+        <di:waypoint x="295" y="82" />
+        <di:waypoint x="455" y="82" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>
