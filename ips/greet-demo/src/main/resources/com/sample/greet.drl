@@ -4,5 +4,5 @@ rule "greet"
 ruleflow-group "greet"
     when
     then
-    	System.out.println("Hello from greet rule :)");
+    	System.out.println("Hello from greet rule and checking the git webhook :)");
 end
