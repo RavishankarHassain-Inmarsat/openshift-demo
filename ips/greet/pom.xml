@@ -6,7 +6,7 @@
 
 	<groupId>com.sample</groupId>
 	<artifactId>greet</artifactId>
-	<version>4.0.0-SNAPSHOT</version>
+	<version>5.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>OpenShift : Intelligent Process Server: Demo</name>
 	<description>A sample jBPM Maven project demonstrating the use of a business process and rules</description>
