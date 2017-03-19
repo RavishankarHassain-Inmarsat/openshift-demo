@@ -2,5 +2,6 @@
 	<kbase name="GreetBase" packages="com.sample" default="true">
         <ksession name="GreetRuleSession" type="stateless" default="false"/>
         <ksession name="GreetProcessSession" type="stateful" default="true"/>
+        <ksession name="HelloWorldProcessSession" type="stateful" default="true"/>
     </kbase>
 </kmodule>
