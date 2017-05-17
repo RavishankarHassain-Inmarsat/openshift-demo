@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cts.eas.ipm</groupId>
 	<artifactId>os-fis-ws-demo</artifactId>
-	<version>1.0.0-RELEASE</version>
+	<version>1.0.1-RELEASE</version>
 	<name>Openshift FIS Webservice Demo</name>
 	<url>http://www.cognizant.com/</url>
 	<inceptionYear>2016</inceptionYear>
