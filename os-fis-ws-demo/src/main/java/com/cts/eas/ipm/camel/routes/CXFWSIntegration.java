@@ -23,7 +23,7 @@ public class CXFWSIntegration extends RouteBuilder {
 		Node node = doc.getElementsByTagName("name").item(0);
 	    String name = node.getTextContent();
 	    String response = "<ns2:sayHelloResponse xmlns:ns2=\"http://www.ipm.eas.cts.com/api/ws/greet\">"
-							+"<response>Hello "+name+", how are you</response>"
+							+"<response>Hello "+name+", how are you :)</response>"
 						 +"</ns2:sayHelloResponse>";
 	    return response;
 	}
